@@ -19,5 +19,13 @@ export default tseslint.config([
       ecmaVersion: 2020,
       globals: globals.browser,
     },
-  },
+    rules: {
+			'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
+			'semi': ['error', 'always', { 'omitLastInOneLineBlock': false }],
+			'comma-dangle': ['error', 'never'],
+			quotes: ['error', 'single'],
+			'react/props-types': [0],
+			'indent': ['error', 'tab']
+		}
+  }
 ])
