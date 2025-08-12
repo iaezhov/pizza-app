@@ -1,0 +1,80 @@
+.link {
+    text-decoration: none;
+    display: flex;
+    width: max-content;
+    border-radius: 19px;
+}
+.card {
+    box-shadow: 18.21px 18.21px 36.43px 0px #D3D1D840;
+    background-color: var(--white-color);
+    border-radius: 19px;
+    width: 320px;
+}
+.head {
+    position: relative;
+    border-radius: 19px;
+    min-height: 165px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.footer {
+    padding: 12px;
+}
+.title {
+    color: var(--text-color);
+    font-weight: 600;
+    font-style: normal;
+    font-size: 18.21px;
+    line-height: normal;
+}
+.description {
+    color: var(--text-secondary-color);
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14.5px;
+    line-height: normal;
+}
+.price {
+    position: absolute;
+    left: 15px;
+    top: 15px;
+    background-color: var(--white-color);
+    color: #111719;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 20px;
+    font-weight: 400;
+    font-style: normal;
+    line-height: normal;
+}
+.currency {
+    color: var(--primary-color);
+}
+.rating {
+    position: absolute;
+    left: 15px;
+    bottom: -12px;
+    background-color: var(--white-color);
+    color: #111719;
+    padding: 3px 8px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 400;
+    font-style: normal;
+    line-height: normal;
+    box-shadow: 0px 6.07px 24.29px 0px #FE724C33;
+}
+.add-to-card {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    width: 34px;
+    height: 34px;
+    border: none;
+    cursor: pointer;
+}
+.add-to-card:hover {
+    background-color: var(--primary-hover-color);
+}

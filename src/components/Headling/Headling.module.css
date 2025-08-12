@@ -1,0 +1,9 @@
+.h1 {
+    font-family: inherit;
+    color: var(--text-color);
+    font-style: normal;
+    font-weight: 600;
+    font-size: 37px;
+    line-height: 120%;
+    margin: 0;
+}
