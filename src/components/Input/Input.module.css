@@ -7,5 +7,6 @@
     border-radius: 10px;
     border: 1px solid #EEEEEE;
     box-shadow: 15px 20px 45px 0px #E9E9E940;
+    box-sizing: border-box;
     padding: 20px;
 }
