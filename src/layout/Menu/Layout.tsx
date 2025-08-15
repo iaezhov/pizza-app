@@ -2,26 +2,39 @@ import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import styles from './Layout.module.css';
 import Button from '../../components/Button/Button';
 import cn from 'classnames';
-
-const links = [
-	{
-		text: 'Меню',
-		to: '/',
-		icon: '/menu-icon.svg',
-		iconAlt: 'Иконка меню'
-	},
-	{
-		text: 'Корзина',
-		to: '/cart',
-		icon: '/cart-icon.svg',
-		iconAlt: 'Иконка корзины'
-	}
-];
+import { useDispatch, useSelector } from 'react-redux';
+import type { AppDispath, RootState } from '../../store/store';
+import { getProfile, userActions } from '../../store/user.slice';
+import { useEffect } from 'react';
 
 export function Layout() {
 	const navigate = useNavigate();
+	const profile = useSelector((s: RootState) => s.user.profile);
+	const cartItems = useSelector((s: RootState) => s.cart.items);
+	const dispatch = useDispatch<AppDispath>();
+
+	const links = [
+		{
+			text: 'Меню',
+			to: '/',
+			icon: '/menu-icon.svg',
+			iconAlt: 'Иконка меню'
+		},
+		{
+			text: 'Корзина',
+			to: '/cart',
+			icon: '/cart-icon.svg',
+			iconAlt: 'Иконка корзины',
+			count: cartItems.reduce((acc, item) => acc += item.count, 0)
+		}
+	];
+
+	useEffect(() => {
+		dispatch(getProfile());
+	}, [dispatch]);
+
 	const logout = () => {
-		localStorage.removeItem('jwt');
+		dispatch(userActions.logout());
 		navigate('/auth/login');
 	};
 
@@ -29,8 +42,8 @@ export function Layout() {
 		<div className={styles['sidebar']}>
 			<div className={styles['user']}>
 				<img className={styles['avatar']} src="/avatar.png" alt="Аватар пользователя" />
-				<div className={styles['name']}>Иван Ежов</div>
-				<div className={styles['email']}>iezh@gmail.com</div>
+				<div className={styles['name']}>{profile?.name}</div>
+				<div className={styles['email']}>{profile?.email}</div>
 			</div>
 			<div className={styles['menu']}>
 				{links.map(link => (
@@ -43,6 +56,7 @@ export function Layout() {
 					>
 						<img src={link.icon} alt={link.iconAlt} />
 						<span>{link.text}</span>
+						{link.count && <div>{ link.count }</div> }
 					</NavLink>
 				))}
 			</div>

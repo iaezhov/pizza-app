@@ -1,10 +1,12 @@
-import type { ReactNode } from 'react';
+import { type ReactNode } from 'react';
+import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
+import type { RootState } from '../store/store';
 
 function RequireAuth({ children }: { children: ReactNode }) {
-	const token = localStorage.getItem('jwt');
+	const jwt = useSelector((state: RootState) => state.user.jwt);
 
-	if (!token) {
+	if (!jwt) {
 		return <Navigate to='/auth/login' replace />;
 	}
 

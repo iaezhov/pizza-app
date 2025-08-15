@@ -6,6 +6,7 @@ export function MenuList({ products = [] }: MenuListProps) {
 	return <div className={styles['wrapper']}>
 		{products.map(p => (
 			<ProductCard
+				key={p.id}
 				id={p.id}
 				description={p.ingredients.join(', ')}
 				title={p.name}
